@@ -115,4 +115,3 @@ namespace strategy_simple {
     }
 
 } // namespace strategy_simple
-

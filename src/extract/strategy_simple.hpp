@@ -24,8 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "strategy.hpp"
-
-#include <osmium/index/id_set.hpp>
+#include "bitmask.hpp"
 
 #include <memory>
 #include <vector>
@@ -33,8 +32,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 namespace strategy_simple {
 
     struct Data {
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> node_ids;
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> way_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> node_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> way_ids;
     };
 
     class Strategy : public ExtractStrategy {

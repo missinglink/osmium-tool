@@ -24,8 +24,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "strategy.hpp"
+#include "bitmask.hpp"
 
-#include <osmium/index/id_set.hpp>
 #include <osmium/index/relations_map.hpp>
 
 #include <memory>
@@ -35,12 +35,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 namespace strategy_smart {
 
     struct Data {
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> node_ids;
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> extra_node_ids;
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> way_ids;
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> extra_way_ids;
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> relation_ids;
-        osmium::index::IdSetDense<osmium::unsigned_object_id_type> extra_relation_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> node_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> extra_node_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> way_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> extra_way_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> relation_ids;
+        BufferedBitmask<osmium::unsigned_object_id_type> extra_relation_ids;
 
         void add_relation_members(const osmium::Relation& relation);
         void add_relation_parents(osmium::unsigned_object_id_type id, const osmium::index::RelationsMapIndex& map);

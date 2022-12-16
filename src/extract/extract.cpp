@@ -22,6 +22,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "extract.hpp"
 
+#include <croaring/roaring.c>
+
 #include <osmium/io/writer_options.hpp>
 
 #include <memory>
@@ -57,4 +59,3 @@ std::string Extract::envelope_as_text() const {
     ss << m_envelope;
     return ss.str();
 }
-
